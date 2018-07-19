@@ -123,6 +123,8 @@ type EventSearchRequest struct {
 	IncorporateUserAffinities bool `json:"incorporate_user_affinities"`
 	// Make search results prefer events in these categories. This should be a comma delimited string of category IDs.
 	HighAffinityCategories string `json:"high_affinity_categories"`
+	// Add pagination page
+	Page string `json:"page"`
 }
 
 // EventCreateRequest is the request structure for creating an Event
