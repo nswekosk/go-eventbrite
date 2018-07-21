@@ -13,7 +13,7 @@ type CategoriesResult struct {
 type SubCategoriesResult struct {
 	Locale        string     `json:"locale"`
 	Pagination    Pagination `json:"pagination"`
-	Subcategories []Category `json:"subcategories"`
+	SubCategories []SubCategory `json:"subcategories"`
 }
 
 type SubCategoryRequest struct {
