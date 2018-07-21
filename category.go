@@ -16,6 +16,10 @@ type SubCategoriesResult struct {
 	Subcategories []Category `json:"subcategories"`
 }
 
+type SubCategoryRequest struct {
+	Page int `json:"page"`
+}
+
 // Categories returns a list of category as categories, including subcategories nested
 //
 // https://www.eventbrite.com/developer/v3/endpoints/categories/#ebapi-get-categories
@@ -37,10 +41,10 @@ func (c *Client) Category(ctx context.Context, id string) (*Category, error) {
 // SubCategories gets a list of subcategory as subcategories
 //
 // https://www.eventbrite.com/developer/v3/endpoints/categories/#ebapi-get-subcategories
-func (c *Client) SubCategories(ctx context.Context) (*SubCategoriesResult, error) {
+func (c *Client) SubCategories(ctx context.Context, req SubCategoryRequest) (*SubCategoriesResult, error) {
 	result := new(SubCategoriesResult)
 
-	return result, c.getJSON(ctx, "/subcategories/", nil, &result)
+	return result, c.getJSON(ctx, "/subcategories/", req, &result)
 }
 
 // SubCategory gets a subcategory by ID as subcategory
