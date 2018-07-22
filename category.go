@@ -17,6 +17,7 @@ type SubCategoriesResult struct {
 }
 
 type SubCategoryRequest struct {
+	// Add pagination page
 	Page int `json:"page"`
 }
 
@@ -41,8 +42,8 @@ func (c *Client) Category(ctx context.Context, id string) (*Category, error) {
 // SubCategories gets a list of subcategory as subcategories
 //
 // https://www.eventbrite.com/developer/v3/endpoints/categories/#ebapi-get-subcategories
-func (c *Client) SubCategories(ctx context.Context, req SubCategoryRequest) (*SubCategoriesResult, error) {
-	result := new(SubCategoriesResult)
+func (c *Client) SubCategories(ctx context.Context, req *SubCategoryRequest) (*SubCategoriesResult, error) {
+	result := &SubCategoriesResult{}
 
 	return result, c.getJSON(ctx, "/subcategories/", req, &result)
 }
